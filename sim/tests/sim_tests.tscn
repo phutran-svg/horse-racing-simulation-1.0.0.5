@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dj0slktgaloir"]
+
+[ext_resource type="Script" uid="uid://cjcjwrwqk8jnn" path="res://sim/tests/sim_tests.gd" id="1"]
+
+[node name="SimTests" type="Control" unique_id=441672123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1218742225]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 6.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.09, 0.1, 0.12, 1)

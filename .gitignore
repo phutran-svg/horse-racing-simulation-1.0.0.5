@@ -1,0 +1,35 @@
+# Godot 4 cache and imports (rebuilt automatically when the project is opened)
+.godot/
+*.tmp
+*.translation
+
+# Export builds
+/export/
+/build/
+*.exe
+*.pck
+
+# Editor / OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.blend1
+.vscode/
+.idea/
+
+# Saves and logs stay on each player's computer (user://), never in the repo
+*.sav
+
+# Publishing hygiene: local credentials, player data, and archived handoffs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+/saves/
+/user_data/
+/Claude outputs/
+.claude/
+.codex/
+.agents/
