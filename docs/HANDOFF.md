@@ -12,8 +12,9 @@ excluded. The supplied game source was not refactored or changed for publishing.
 
 Checks: every copied source file was compared byte-for-byte using SHA-256;
 high-confidence token/private-key patterns and sensitive filenames were scanned;
-no obvious secret was found. Project entry scene and referenced extension
-libraries were checked for inclusion. This is an upload/integrity check, not a
+no obvious secret was found. Project entry scene and Windows x64 extension
+libraries were checked for inclusion. Sixteen optional platform library paths
+are already absent in the supplied source and remain absent. This is an upload/integrity check, not a
 fresh gameplay regression test. No save-writing tests or engine changes occurred.
 
 Existing asset/data/add-on terms and provenance remain in their credit/license
