@@ -15,11 +15,12 @@ The project uses the Vulkan renderer on Windows. If your graphics card has troub
 
 ## What's in the game
 
-- **Race engine:** a physics model of each horse's speed, stamina and acceleration, calibrated to real JRA race times. Every other race uses a fast quick model.
+- **Race engine:** a physics model of each horse's speed, stamina and acceleration, calibrated to real JRA race times. Every other race uses a fast quick model. The full engine also runs as a C++ extension (`addons/race_core`) about 100× faster, with results identical to the GDScript version.
 - **Breeding:** genetics with heritability, the MSTN "speed gene", coat colours and markings, and inbreeding. The stud book starts with real sires.
 - **Career:** play as an owner, trainer or breeder through the real graded calendar plus overseas G1s, with ratings, jockeys, trainers, finances, injuries and retirement.
 - **Market:** the yearly sales, including a 3D sale ring with live bidding. Yearlings are judged mostly on pedigree.
 - **Race day:** a race card for every race, odds and all 8 JRA bet types, a 3D paddock, and 3D races with TV-style cameras, the JRA-style overlay, weather and seasons.
+- **Riders and silks:** an animated jockey on every horse (riding, pushing and using the crop in time with the gallop), reins, a fitted racing saddle with the horse's number and name, and 40 owner silks (25 Japan, 5 USA, 5 Europe, 5 Hong Kong) with JRA bracket-coloured caps. Owners without catalogue silks use generated colours.
 - **World:** about 1,100 foals a year, plus rival open-class horses from the rest of Japan. The share of horses that win a race, reach open class and win a G1 matches real JRA figures.
 
 ## Settings and bug reports
@@ -38,7 +39,8 @@ The project uses the Vulkan renderer on Windows. If your graphics card has troub
 | `race3d/` | 3D race, paddock, sale ring, cameras, TV overlay, weather effects |
 | `assets/` | Models (horse, gate), textures, coats and markings, sounds (see `assets/models/CREDITS.md`) |
 | `data/` | Real data tables: courses, sires, race times |
-| `addons/` | Godot add-ons |
+| `addons/` | Godot add-ons: `race_core` (C++ race engine, prebuilt for Windows and Linux) and `terrain_3d` |
+| `native/race_core/` | C++ source of the race engine extension (see below) |
 
 ## Tests
 
@@ -59,6 +61,17 @@ Useful ones:
 - `perf_week.gd -- 52 5`: a full season's timing by phase.
 
 Screenshot tests (`shot_*.gd`) need a display. Run them with `--rendering-driver opengl3`.
+
+## Building the C++ race engine (only if you change it)
+
+The built libraries are committed in `addons/race_core/bin`, so you do not need this to play. To rebuild after changing `native/race_core/src`:
+
+1. Install Python 3 and SCons (`pip install scons`), plus a C++ compiler (MSVC on Windows, or MinGW).
+2. Clone godot-cpp into `native/race_core/godot-cpp` (it is not stored in this repo), on the branch that matches Godot 4.7.
+3. From `native/race_core`, run `scons platform=windows target=template_release` (or `platform=linux`).
+4. Check that `native_check.gd` still reports every race identical to the GDScript engine.
+
+If the library is missing, the game falls back to the GDScript engine automatically.
 
 ## Team
 
